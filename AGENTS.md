@@ -95,7 +95,7 @@ This repository holds shared agent rules for `SOU` work.
 - Keep `TODO.md` as a live work queue, not a diary or changelog.
 - Keep items concrete and action-oriented.
 - Each item must be understandable out of context.
-- If the title alone is not enough, add short `Why:` and `Done when:` lines.
+- If the title alone is not enough, add short labeled `Why:` and `Done when:` child lines.
 - One item should describe one outcome.
 - Split large items before starting work on them.
 - Prefer at most three items in `Now`.
