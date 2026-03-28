@@ -73,25 +73,22 @@ This repository holds shared agent rules for `SOU` work.
 - Prefer boring, maintainable output over impressive-looking output.
 - When in doubt, reduce scope instead of increasing complexity.
 
-## Shared Workspace Rules
+## Shared Repo Operations
 
-- Workspace root is `/root/step`.
-- GitHub repositories should live as direct children of `/root/step` unless there is an explicit reason not to.
+- Keep related SOU repositories in a predictable layout when cross-repo work depends on sibling checkouts.
 - Use `gh` for GitHub operations.
 - Use SSH for Git transport.
 
 ## Local vs Upstream
 
-- Keep machine-specific shims local by default.
+- Keep machine-specific shims, paths, and workspace layout notes local by default.
 - Do not upstream local path hacks, shell preferences, or workstation-only layout assumptions unless the team explicitly decides to standardize them.
 - Upstream anything that improves shared reproducibility, portability, onboarding, testing, or collaboration.
 
-## Current SOU Workspace Notes
+## SOU Repo Notes
 
 - `rifrl` is the main product repo.
 - `rifrl` is not standalone and expects sibling dependencies.
-- The current local workspace uses a flat `/root/step/<repo>` layout plus a compatibility `depends/` shim.
-- That compatibility layer is a local workspace choice, not a shared repo contract.
 
 ## TODO Discipline
 
