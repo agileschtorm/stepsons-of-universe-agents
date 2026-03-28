@@ -78,6 +78,19 @@ This repository holds shared agent rules for `SOU` work.
 - The current local workspace uses a flat `/root/step/<repo>` layout plus a compatibility `depends/` shim.
 - That compatibility layer is a local workspace choice, not a shared repo contract.
 
+## TODO Discipline
+
+- Keep `TODO.md` as a live work queue, not a diary or changelog.
+- Keep items short, concrete, and action-oriented.
+- One item should describe one outcome.
+- Split large items before starting work on them.
+- Prefer at most three items in `Now`.
+- Delete completed items instead of keeping a long `Done` section.
+- If part of an item remains, rewrite the remainder as a new smaller item.
+- Put blocked work in `Blocked` with a short reason.
+- Do not put durable notes, design discussion, or research dumps into `TODO.md`; move those to `notes/`.
+- Update `TODO.md` in the same change that materially changes task state.
+
 ## Notes Discipline
 
 - Capture durable findings in `notes/`.
