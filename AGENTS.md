@@ -112,6 +112,7 @@ This repository holds shared agent rules for `SOU` work.
 ## Notes Discipline
 
 - Capture durable findings in `notes/`.
+- Every note must say why it exists. If it cannot justify itself, delete it.
 - Prefer exact repo names, branch names, and dates over vague summaries.
 - When a shared rule changes, update this file in the same change.
 

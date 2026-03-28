@@ -1,5 +1,9 @@
 # rifrl: Make Primary Action Talk To NPCs
 
+## Why This Note Exists
+
+This note exists to explain one concrete next gameplay story and why it is worth doing before starting implementation.
+
 ## What To Fix
 
 Right now `PrimaryAction` attacks the selected target even if that target is an NPC you can talk to.
