@@ -22,6 +22,18 @@ This file tracks live work only.
 
 ## Backlog
 
+- Make timeout-only NPC conversations actually start in `rifrl`.
+  - **What to fix:** some NPC talks rely on `timeout(...)` choices, but interaction currently stops if a hub has no player speech options.
+  - **Why now:** the game already contains timeout-driven talk content, but some of it never starts, so real dialogue work is effectively hidden.
+  - **Done when:** bumping into or otherwise starting talk with a timeout-only NPC reliably begins that conversation instead of doing nothing.
+- Preserve per-map state when moving through portals in `rifrl`.
+  - **What to fix:** portal `target_map` values are inconsistent, so the same map can end up with different identities during save/load.
+  - **Why now:** if the same map can be reached under different IDs, revealed tiles and local world state can appear to reset during normal exploration.
+  - **Done when:** each map has one stable identity and returning to an area keeps its revealed state and other saved world state.
+- Fix the gear drop and pickup loop for equippable items in `rifrl`.
+  - **What to fix:** dropping equipped gear removes attachment state, but the item is not restored cleanly to normal ground-item rendering.
+  - **Why now:** a broken or crashy equip/drop/pickup loop blocks normal inventory play and makes gear-related testing unreliable.
+  - **Done when:** equippable items can be equipped, dropped, and picked up again without crashes, broken attachments, or wrong rendering.
 - Choose and apply the final name for this shared coordination repo.
   - **Why now:** as long as the repo is named `stepsons-of-universe-agents`, human collaborators can reasonably treat it as tool-specific and miss the shared rules and notes.
   - **Done when:** the agreed repo name is applied consistently in GitHub, local clones, and shared docs.
