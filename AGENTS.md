@@ -1,49 +1,85 @@
 # AGENTS
 
-This repository is the coordination layer for Stepsons of Universe work.
+This repository holds shared agent rules for `SOU` work.
 
-## Scope
+`SOU` means `Stepsons of Universe`.
 
-- Track agent instructions, workspace assumptions, and remote inspection notes.
-- Keep cross-repo guidance here until the game workspace layout is settled.
-- Treat `stepsons-of-universe/rifrl` as the main product repo.
+## Priorities
 
-## Workspace Rules
+- Do no harm.
+- Help other contributors succeed.
+- Keep work crisp, low-noise, and easy to review.
+- Prefer clarity and reversibility over speed or cleverness.
+
+## Core Rules
+
+- If scope, ownership, or expected behavior is unclear, stop and ask.
+- Always work on a branch. Never commit directly to `main`.
+- Keep each branch and PR focused on one exact change.
+- Keep PRs small enough to review in one sitting.
+- If a change grows beyond one purpose, split it.
+- Do not mix feature work, refactors, formatting, renames, and dependency bumps unless strictly required.
+- Do not touch unrelated files.
+- Do not revert or rewrite someone else's work unless explicitly asked.
+
+## Code Rules
+
+- Choose the smallest correct change first.
+- Prefer simple, explicit code over clever abstractions.
+- Do not add abstraction without a concrete need.
+- Preserve the existing style and architecture unless there is a real reason to change them.
+- Optimize for mixed-skill teammates: readable names, predictable control flow, low surprise.
+- Avoid mass cleanup and drive-by rewrites.
+- Keep comments short and focused on why, not what.
+
+## Review Rules
+
+- Review your own diff before asking others to review it.
+- Remove dead code, accidental edits, debug leftovers, and low-signal changes.
+- Check whether the change is easy to revert if needed.
+- If behavior changes, add or update the smallest relevant test.
+- Before commit, run the narrowest meaningful validation for the change.
+- Never present untested code as done.
+- If you could not validate something, say exactly what was not run and why.
+
+## Communication Rules
+
+- Keep PR descriptions short, concrete, and factual.
+- Keep review comments specific to behavior, correctness, risk, or maintainability.
+- Avoid long comment walls unless the problem genuinely requires it.
+- Avoid status spam and low-signal updates.
+- Leave short handoff notes only when they reduce confusion.
+
+## Agent-Specific Rules
+
+- Do not generate large low-signal code or documentation just because it is easy to generate.
+- Do not hide uncertainty. State it plainly.
+- Use model quality appropriate to the task. Do not trade correctness for speed or token cost.
+- Prefer boring, maintainable output over impressive-looking output.
+- When in doubt, reduce scope instead of increasing complexity.
+
+## Shared Workspace Rules
 
 - Workspace root is `/root/step`.
-- Each GitHub repository should live as a direct child of `/root/step` when possible.
-- Do not clone `stepsons-of-universe/rifrl` or its dependency repos until the user asks.
-- Use `gh` for repository creation, inspection, and other GitHub actions.
-- Use SSH transport for Git operations.
+- GitHub repositories should live as direct children of `/root/step` unless there is an explicit reason not to.
+- Use `gh` for GitHub operations.
+- Use SSH for Git transport.
 
-## Current Known Constraint
+## Local vs Upstream
 
-- `rifrl` is not standalone.
-- `Cargo.toml` references local path dependencies in `../depends/...`.
-- `clone-depends.sh` clones sibling repos into `../depends/`.
-- The preferred flat layout from the user conflicts with that assumption.
-- Before cloning `rifrl`, record whether we will use symlinks, a compatibility `depends/` directory, or local script changes.
+- Keep machine-specific shims local by default.
+- Do not upstream local path hacks, shell preferences, or workstation-only layout assumptions unless the team explicitly decides to standardize them.
+- Upstream anything that improves shared reproducibility, portability, onboarding, testing, or collaboration.
 
-## Upstream Repos Already Identified
+## Current SOU Workspace Notes
 
-- `stepsons-of-universe/rifrl`
-- `stepsons-of-universe/lua_ecs`
-- `stepsons-of-universe/macroquad-tiled-redux`
-- `singalen/rlua_json`
-- `stepsons-of-universe/step-percentage`
-- `stepsons-of-universe/step-combat`
-- `stepsons-of-universe/step-engine`
-- `stepsons-of-universe/step-ecs`
-- `stepsons-of-universe/step-talk`
-- `stepsons-of-universe/step-talk-tester`
-- `stepsons-of-universe/step-ui`
-- `stepsons-of-universe/step-buffs`
-- `stepsons-of-universe/stepsons-shadowcasting`
-- `stepsons-of-universe/thin-walls`
-- `stepsons-of-universe/thin-walls-visibility`
+- `rifrl` is the main product repo.
+- `rifrl` is not standalone and expects sibling dependencies.
+- The current local workspace uses a flat `/root/step/<repo>` layout plus a compatibility `depends/` shim.
+- That compatibility layer is a local workspace choice, not a shared repo contract.
 
 ## Notes Discipline
 
-- Capture remote findings in `notes/`.
+- Capture durable findings in `notes/`.
 - Prefer exact repo names, branch names, and dates over vague summaries.
-- When a local workspace decision changes, update this file and the relevant note in the same change.
+- When a shared rule changes, update this file in the same change.
