@@ -12,8 +12,8 @@ This file tracks live work only.
 
 ## Now
 
+- Plan the `rifrl` onboarding automation follow-up and review the architecture before implementation.
 - Choose the final name for this management repo and rename it.
-- Push the current agent policy branch and decide its merge path.
 - Write a short workspace bootstrap note for the flat `/root/step/<repo>` layout and local `depends/` compatibility shim.
 
 ## Next
