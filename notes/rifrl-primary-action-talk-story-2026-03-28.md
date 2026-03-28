@@ -1,17 +1,30 @@
-# rifrl: Primary Action Talks To NPCs
+# rifrl: Make Primary Action Talk To NPCs
 
 ## What To Fix
 
-Primary action currently attacks the selected target even when the target is a talkable NPC. That makes the main action flow inconsistent with the intended "Attack/Talk" control behavior.
+Right now `PrimaryAction` attacks the selected target even if that target is an NPC you can talk to.
+
+Walking into that NPC already opens dialogue, so the main action button does not match the way the game already works.
 
 ## Why Now
 
-This is already a player-facing gap in the current game. The project has talkable NPC content, but the main action path still makes talking feel like a workaround instead of a normal part of play.
+The game already has NPC dialogue. Right now it is easy to miss, and the controls feel off because the main action button does the wrong thing in this case.
 
 ## Proposed Change
 
-When the player uses primary action on an adjacent talkable NPC, open dialogue instead of attacking. Reuse the existing interaction path and keep normal attack behavior for non-talkables and combat cases.
+If the selected target is a talkable NPC next to the player, `PrimaryAction` should open dialogue instead of attacking.
+
+For everything else, keep the current attack behavior.
+
+## Proposed Implementation
+
+- Change `PrimaryAction` handling in `src/systems/player_input.rs`.
+- Before calling `fight(...)`, check whether the selected target is next to the player and has `Interactable`.
+- If yes, reuse `begin_interaction(...)`.
+- Keep this change small. Do not mix in friendliness, faction, or combat rework.
 
 ## Expected Result
 
-Talking to NPCs becomes part of the main gameplay loop, the controls behave more like the game already claims they do, and existing dialogue content becomes easier to reach and test.
+Talking to NPCs becomes part of the normal action flow.
+
+The controls make more sense, and the dialogue that is already in the game becomes easier to find and test.
