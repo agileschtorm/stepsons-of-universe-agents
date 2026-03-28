@@ -16,9 +16,9 @@ This file tracks live work only.
 
 ## Now
 
-- Get PM sign-off on the next gameplay story for `rifrl`: [rifrl-primary-action-talk-story-2026-03-28.md](notes/rifrl-primary-action-talk-story-2026-03-28.md).
-  - **Why now:** before starting another round of implementation, the team needs one agreed gameplay-facing story that is worth doing next.
-  - **Done when:** PM accepts the story, changes the scope, or rejects it.
+- Make talking to NPCs part of the main action flow in `rifrl`: [rifrl-primary-action-talk-story-2026-03-28.md](notes/rifrl-primary-action-talk-story-2026-03-28.md).
+  - **Why now:** the game already contains talkable NPC content, but the main action path still makes talking feel broken and easy to miss.
+  - **Done when:** the next implementation story is aligned around this player-facing change and ready to execute.
 
 ## Backlog
 
@@ -38,11 +38,10 @@ This file tracks live work only.
 - Decide which shared coordination files belong in this repo besides `AGENTS.md`, `TODO.md`, and `notes/`.
   - **Why now:** if repo scope stays implicit, ad hoc docs will keep landing here and become harder to unwind later.
   - **Done when:** the allowed file types are listed and the exclusions are explicit.
+- Fix the wasm `uuid` feature issue in `step-buffs`.
+  - **Why now:** it currently blocks `rifrl` from passing `cargo check --target wasm32-unknown-unknown`.
+  - **Done when:** the dependency issue is resolved and the wasm target check passes.
 
 ## Blocked
 
 - None.
-
-- Fix the wasm `uuid` feature issue in `step-buffs`.
-  - **Why now:** it currently blocks `rifrl` from passing `cargo check --target wasm32-unknown-unknown`.
-  - **Done when:** the dependency issue is resolved and the wasm target check passes.
