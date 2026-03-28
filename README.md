@@ -1,30 +1,49 @@
 # Stepsons of Universe Agents
 
-This repository holds agent-facing workspace rules, inspection notes, and operating documents for the Stepsons of Universe game work.
+This repository is the shared coordination repo for Stepsons of Universe (`SOU`) work. It exists so workspace-level rules, cross-repo notes, and live coordination documents have one stable home instead of being scattered across product repositories.
 
-Current primary upstream repo:
+## Audience
 
-- `stepsons-of-universe/rifrl`
+This repo is for:
 
-Current workspace root:
+- collaborators joining or reviewing the `/root/step` workspace
+- contributors deciding where a rule, note, or coordination document belongs
+- agents and operators who need the shared working rules before making changes
 
-- `/root/step`
+## Purpose
 
-Initial local policy:
+Use this repo to:
 
-- Clone GitHub repositories as direct children of `/root/step`.
-- Use `gh` for GitHub operations.
-- Use SSH for Git transport.
-- Keep agent instructions and project notes here instead of mixing them into game repos until the workspace shape is stable.
+- publish shared working rules in [`AGENTS.md`](AGENTS.md)
+- track live cross-repo work in [`TODO.md`](TODO.md)
+- keep durable findings, plans, and inspection notes in [`notes/`](notes/)
+- document workspace-level conventions that are local to this environment
 
-Known workspace issue:
+Do not use this repo for product-specific implementation documentation that should live with the code in `rifrl` or another SOU repository.
 
-- `rifrl` currently expects local path dependencies under `../depends/<repo>` and its `clone-depends.sh` script clones into `../depends/`.
-- That conflicts with the target flat layout of `/root/step/<repo>`.
-- When we clone `rifrl`, we will need either compatibility symlinks or a patched local bootstrap workflow.
+## Repo Map
 
-Bootstrap status on March 28, 2026:
+- [`AGENTS.md`](AGENTS.md): shared rules for planning, implementation, review, documentation, and collaboration
+- [`TODO.md`](TODO.md): live work queue for this coordination repo and cross-repo tasks
+- [`notes/`](notes/): durable plans, inspection notes, and findings worth keeping
 
-- `gh` API auth is working for `agileschtorm`.
-- `gh` Git protocol is set to `ssh`.
-- `stepsons-of-universe/rifrl` has been inspected remotely only and has not been cloned into this workspace yet.
+## Workspace Context
+
+- Workspace root: `/root/step`
+- GitHub repos normally live at `/root/step/<repo>`
+- Use `gh` for GitHub operations
+- Use SSH for Git transport
+- `rifrl` is the main product repo in this workspace
+- `rifrl` is not standalone and expects sibling dependencies
+- The current local setup uses a flat `/root/step/<repo>` layout plus a compatibility `depends/` shim
+- That compatibility layer is a local workspace convention, not an upstream contract unless the team explicitly adopts it
+
+## How To Use This Repo
+
+If you are new here:
+
+1. Read [`AGENTS.md`](AGENTS.md) first.
+2. Check [`TODO.md`](TODO.md) for current work.
+3. Open the relevant file in [`notes/`](notes/) for durable context before changing cross-repo behavior.
+
+If a document is mainly about code behavior in one product repo, move it closer to that code instead of growing this repository.
