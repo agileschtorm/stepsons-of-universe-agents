@@ -19,6 +19,7 @@ The automation must prove that a new contributor can:
 
 - Do not replace the host-native onboarding path with Docker or a devcontainer.
 - Do not build a full release pipeline.
+- Do not add hosted GitHub CI for this project right now.
 - Do not package or launch the graphical game client in CI yet.
 - Do not solve cross-platform contributor setup beyond the initial Linux x86_64 automation pass.
 - Do not mix this work into `rifrl#23`.
@@ -29,9 +30,9 @@ The automation must prove that a new contributor can:
 - The onboarding script clones a repo graph, not a single repository.
 - The current onboarding contract is a sibling `../depends` workspace.
 - Any automation must exercise that real sibling `../depends` layout, not replace it with a different contract.
-- There is no existing `.github/workflows` directory in `rifrl`.
 - Secrets must not be baked into Docker images, committed files, or image build layers.
 - The first automation pass should stay reviewable in one PR.
+- The project should avoid hosted GitHub Actions cost for now.
 
 ## What Must Be Validated
 
@@ -100,12 +101,13 @@ Pros:
 
 - simpler than Docker
 - fewer moving parts
+- zero hosted CI cost
+- usable by maintainers before merge without extra infrastructure
 
 Cons:
 
 - runner image is warm and less controlled
-- system dependencies may drift under us
-- reproducing CI locally becomes weaker
+- system dependencies may drift between maintainers
 
 Decision:
 
@@ -118,16 +120,17 @@ Pros:
 - explicit system dependency set
 - reproducible Linux x86_64 environment
 - good separation between image contents and runtime credentials
-- can be used both locally and in CI
+- can be used both locally and in self-hosted CI
 
 Cons:
 
 - more setup than host-runner-only CI
 - another small layer to maintain
+- unnecessary if the maintainer-run smoke harness already gives enough confidence
 
 Decision:
 
-- useful as a later wrapper, but not the first boundary to introduce
+- optional later wrapper, but not needed now
 
 ### Option E: Devcontainer As The Primary Solution
 
@@ -182,18 +185,15 @@ Non-responsibilities:
 - do not duplicate bootstrap logic from `scripts/dev-env.sh`
 - do not own Git transport semantics beyond providing runtime auth
 
-### CI Layer
+### Maintainer Run Layer
 
-Add a GitHub Actions workflow that runs:
-
-1. script syntax + `shellcheck`
-2. clean-room onboarding smoke test
+Use the smoke harness as a local/shared maintainer tool.
 
 Responsibilities:
 
-- install the container/runtime prerequisites
-- provide runtime credentials through secrets
-- report pass/fail for PRs
+- run the clean-room onboarding check before merge when the setup contract changes
+- provide runtime credentials only for the duration of the smoke run
+- keep the validation path available without introducing hosted CI cost
 
 ## Credential Strategy
 
@@ -211,17 +211,17 @@ Reasoning:
 
 - simpler than managing one SSH key across many private repositories
 - easier to scope and rotate
-- keeps auth ownership in the harness/CI layer instead of the product script
-- a better fit for CI
+- keeps auth ownership in the harness/maintainer-run layer instead of the product script
+- keeps local runs and any future self-hosted automation aligned
 
 ## Separation Of Responsibilities
 
 - `scripts/dev-env.sh`: onboarding behavior
 - smoke-test harness: controlled execution environment and ephemeral runtime auth
 - Docker image: system packages only, if introduced later
-- GitHub Actions workflow: orchestration and secret injection
+- maintainer-run invocation: explicit execution of the smoke harness when onboarding changes
 
-This separation avoids turning the onboarding script into a CI-specific tool while still making CI prove the real contributor flow.
+This separation avoids turning the onboarding script into a CI-specific tool while still making maintainers prove the real contributor flow.
 
 ## Avoided Work
 
@@ -231,9 +231,9 @@ This separation avoids turning the onboarding script into a CI-specific tool whi
 - no release packaging checks in this pass
 - no replacement of the current `Makefile`
 
-## Proposed PR 2 Scope
+## Execution Decision
 
-Split the automation work into two PRs.
+Proceed with the smoke harness only for now.
 
 ### PR 2A: Make The Smoke Harness Explicit
 
@@ -243,16 +243,15 @@ Split the automation work into two PRs.
 - make the harness prove `check`, `bootstrap`, `verify`, and broken-`.venv` recovery
 - document the runtime auth contract for automation
 
-### PR 2B: Wrap The Harness In CI
+Deferred:
 
-- add one Linux x86_64 GitHub Actions workflow
-- optionally add a thin Docker image or container job for reproducible system packages
-- inject runtime credentials in CI
-- run the existing smoke harness instead of re-implementing the flow in YAML
+- hosted GitHub Actions is out of scope for now
+- Docker remains optional and should only be added later if maintainers actually need a more reproducible local wrapper
+- any future automation should prefer self-hosted or maintainer-run execution over paid hosted CI unless project priorities change
 
 ## Follow-Up Candidates
 
 - add small behavior tests for `dev-env.sh` if the script grows further
 - add macOS validation
-- add arm64 validation when runner strategy is ready
-- add a separate devcontainer only if interactive contributor setup still needs it after CI coverage exists
+- add arm64 validation when a maintainer-run or self-hosted strategy is ready
+- add a separate devcontainer only if interactive contributor setup still needs it after the smoke harness proves insufficient
