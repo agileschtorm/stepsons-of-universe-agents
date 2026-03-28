@@ -93,14 +93,17 @@ This repository holds shared agent rules for `SOU` work.
 ## TODO Discipline
 
 - Keep `TODO.md` as a live work queue, not a diary or changelog.
-- Keep items short, concrete, and action-oriented.
+- Keep items concrete and action-oriented.
+- Each item must be understandable out of context.
+- If the title alone is not enough, add short `Why:` and `Done when:` lines.
 - One item should describe one outcome.
 - Split large items before starting work on them.
 - Prefer at most three items in `Now`.
 - Delete completed items instead of keeping a long `Done` section.
 - If part of an item remains, rewrite the remainder as a new smaller item.
 - Put blocked work in `Blocked` with a short reason.
-- Do not put durable notes, design discussion, or research dumps into `TODO.md`; move those to `notes/`.
+- Include blockers, dependencies, or owners only when they materially affect execution.
+- Do not put durable notes, design discussion, or research dumps into `TODO.md`; move deeper context to `notes/`.
 - Update `TODO.md` in the same change that materially changes task state.
 
 ## Notes Discipline
