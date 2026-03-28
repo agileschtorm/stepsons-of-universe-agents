@@ -101,6 +101,7 @@ This repository holds shared agent rules for `SOU` work.
 - One item should describe one outcome.
 - Split large items before starting work on them.
 - Prefer at most three items in `Now`.
+- Put not-current work in `Backlog`.
 - Delete completed items instead of keeping a long `Done` section.
 - If part of an item remains, rewrite the remainder as a new smaller item.
 - Put blocked work in `Blocked` with a short reason.

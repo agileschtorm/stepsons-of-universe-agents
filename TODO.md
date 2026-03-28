@@ -9,11 +9,18 @@ This file tracks live work only.
 - Add short labeled `Why now:` and `Done when:` child lines when the title alone is not enough.
 - Make `Why now:` explain the cost of not doing the work, the risk of delay, or the reason the work should not wait.
 - Keep `Now` small.
+- Put not-current work in `Backlog`.
 - Delete completed items.
 - Move blocked work to `Blocked` with a reason.
 - Move durable context to `notes/`, not here.
 
 ## Now
+
+- Get PM sign-off on the next gameplay story for `rifrl`: [rifrl-primary-action-talk-story-2026-03-28.md](notes/rifrl-primary-action-talk-story-2026-03-28.md).
+  - **Why now:** before starting another round of implementation, the team needs one agreed gameplay-facing story that is worth doing next.
+  - **Done when:** PM accepts the story, changes the scope, or rejects it.
+
+## Backlog
 
 - Choose and apply the final name for this shared coordination repo.
   - **Why now:** as long as the repo is named `stepsons-of-universe-agents`, human collaborators can reasonably treat it as tool-specific and miss the shared rules and notes.
@@ -25,8 +32,6 @@ This file tracks live work only.
   - **Why now:** without a standard record, local smoke runs are not durable review evidence and cannot be compared across maintainers.
   - **Done when:** there is one documented format covering command, environment, date, result, and where the record should live.
 
-## Next
-
 - Define the `SOU` arm64 collaboration strategy and the split between local-only and upstream changes.
   - **Why now:** before more arm64-only fixes accumulate, the team needs a rule for what stays local and what should be proposed upstream.
   - **Done when:** there is a short decision record describing the boundary between local-only changes and upstreamable fixes.
@@ -37,8 +42,6 @@ This file tracks live work only.
 ## Blocked
 
 - None.
-
-## Later
 
 - Fix the wasm `uuid` feature issue in `step-buffs`.
   - **Why now:** it currently blocks `rifrl` from passing `cargo check --target wasm32-unknown-unknown`.
