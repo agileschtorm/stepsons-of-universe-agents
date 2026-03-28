@@ -16,12 +16,15 @@ This file tracks live work only.
 
 ## Now
 
-- Make talking to NPCs part of the main action flow in `rifrl`: [rifrl-primary-action-talk-story-2026-03-28.md](notes/rifrl-primary-action-talk-story-2026-03-28.md).
-  - **Why now:** the game already contains talkable NPC content, but the main action path still makes talking feel broken and easy to miss.
-  - **Done when:** the next implementation story is aligned around this player-facing change and ready to execute.
+- Turn `rifrl` into the SOU umbrella repo: [rifrl-umbrella-repo-design-2026-03-28.md](notes/rifrl-umbrella-repo-design-2026-03-28.md).
+  - **Why now:** we already rejected the onboarding PR chain, so more work on the sibling-checkout layout would improve a structure we are replacing.
+  - **Done when:** `rifrl` builds from one checkout with in-repo dependency directories and no required sibling `../depends` workspace.
 
 ## Backlog
 
+- Make talking to NPCs part of the main action flow in `rifrl`: [rifrl-primary-action-talk-story-2026-03-28.md](notes/rifrl-primary-action-talk-story-2026-03-28.md).
+  - **Why now:** the game already contains talkable NPC content, but the main action path still makes talking feel broken and easy to miss.
+  - **Done when:** the next implementation story is aligned around this player-facing change and ready to execute.
 - Make timeout-only NPC conversations actually start in `rifrl`.
   - **What to fix:** some NPC talks rely on `timeout(...)` choices, but interaction currently stops if a hub has no player speech options.
   - **Why now:** the game already contains timeout-driven talk content, but some of it never starts, so real dialogue work is effectively hidden.
@@ -37,12 +40,6 @@ This file tracks live work only.
 - Choose and apply the final name for this shared coordination repo.
   - **Why now:** as long as the repo is named `stepsons-of-universe-agents`, human collaborators can reasonably treat it as tool-specific and miss the shared rules and notes.
   - **Done when:** the agreed repo name is applied consistently in GitHub, local clones, and shared docs.
-- Add a compact repo map around `rifrl` and its required sibling repos.
-  - **Why now:** without a repo map, each collaborator has to rediscover the same dependency graph before they can judge onboarding, build, or dependency changes.
-  - **Done when:** a short note names the key repos around `rifrl` and the role each one plays.
-- Decide how maintainers should record and communicate local smoke-harness runs for `rifrl`.
-  - **Why now:** without a standard record, local smoke runs are not durable review evidence and cannot be compared across maintainers.
-  - **Done when:** there is one documented format covering command, environment, date, result, and where the record should live.
 
 - Define the `SOU` arm64 collaboration strategy and the split between local-only and upstream changes.
   - **Why now:** before more arm64-only fixes accumulate, the team needs a rule for what stays local and what should be proposed upstream.
