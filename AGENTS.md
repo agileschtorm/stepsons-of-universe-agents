@@ -35,6 +35,9 @@ This repository holds shared agent rules for `SOU` work.
 ## Review Rules
 
 - Review your own diff before asking others to review it.
+- Every change must go through an independent review pass before it is called done.
+- Scripts, shell, CI, build, and automation changes must be reviewed for clarity, safety, idempotency, portability, and failure modes.
+- Code changes must have relevant test coverage or a short explicit reason why tests were not added.
 - Remove dead code, accidental edits, debug leftovers, and low-signal changes.
 - Check whether the change is easy to revert if needed.
 - If behavior changes, add or update the smallest relevant test.
