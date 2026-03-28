@@ -32,6 +32,18 @@ This repository holds shared agent rules for `SOU` work.
 - Avoid mass cleanup and drive-by rewrites.
 - Keep comments short and focused on why, not what.
 
+## Planning Rules
+
+- Any complex job must be planned before implementation starts.
+- For complex work, first discuss the plan with the operator and align on scope, goals, and success criteria.
+- For complex work, obtain an independent architect-agent review of the plan before implementation.
+- For complex work, create a written plan document before implementation.
+- Do not implement complex work until the plan has been discussed, reviewed, and written down.
+- The plan must cover scope, constraints, assumptions, risks, tradeoffs, alternatives, and why rejected alternatives were not chosen.
+- The plan must actively look for unnecessary work and remove it before implementation begins.
+- The plan must define clear separation of layers, responsibilities, and ownership boundaries.
+- If the work stops being small and becomes complex, stop implementation and return to planning.
+
 ## Review Rules
 
 - Review your own diff before asking others to review it.
@@ -99,3 +111,10 @@ This repository holds shared agent rules for `SOU` work.
 - Capture durable findings in `notes/`.
 - Prefer exact repo names, branch names, and dates over vague summaries.
 - When a shared rule changes, update this file in the same change.
+
+## Documentation Rules
+
+- Keep `README` focused on user-facing onboarding, setup, and usage.
+- Keep maintainer guidance close to the code, script, or config it governs whenever possible.
+- Do not create standalone docs for small implementation notes unless broad discoverability is genuinely needed.
+- If behavior changes are user-facing, update the nearby code comment and the relevant `README` section in the same change.
