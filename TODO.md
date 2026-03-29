@@ -16,9 +16,7 @@ This file tracks live work only.
 
 ## Now
 
-- Turn `rifrl` into the SOU umbrella repo: [rifrl-umbrella-repo-design-2026-03-28.md](notes/rifrl-umbrella-repo-design-2026-03-28.md).
-  - **Why now:** we already rejected the onboarding PR chain, so more work on the sibling-checkout layout would improve a structure we are replacing.
-  - **Done when:** `rifrl` builds from one checkout with in-repo dependency directories and no required sibling `../depends` workspace.
+- None.
 
 ## Backlog
 

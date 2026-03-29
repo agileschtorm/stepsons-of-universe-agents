@@ -1,0 +1,19 @@
+[package]
+name = "orcish-raid-animation-contract"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+coarsetime = ">=0.1.20"
+frame_counter = "0.1"
+lazy_static = "1"
+macroquad = "0.4.14"
+macroquad-tiled-redux = { path = "../../../macroquad-tiled-redux" }
+rand = "0.9"
+step-combat = { path = "../../../step-combat" }
+step-engine = { path = "../../../step-engine" }
+step-percentage = { path = "../../../step-percentage" }
+thin-walls = { path = "../../../thin-walls" }
+thin-walls-visibility = { path = "../../../thin-walls-visibility" }
+
